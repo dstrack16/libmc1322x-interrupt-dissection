@@ -9,7 +9,7 @@ This file contains the interrupt vector table.
 
 Professor Chen mentioned this paragraph will be important: 
 
-"The "fetch" method loads the PC indirectly, using the address of some entry inside the interrupt vector table to pull an address out of that table, and then loading the PC with that address.[5] Each and every entry of the IVT is the address of an interrupt service routine. All Motorola/Freescale microcontrollers use the fetch method." (taken from https://en.wikipedia.org/wiki/Interrupt_vector_table). 
+"The "fetch" method loads the PC indirectly, using the address of some entry inside the interrupt vector table to pull an address out of that table, and then loading the PC with that address. Each and every entry of the IVT is the address of an interrupt service routine. All Motorola/Freescale microcontrollers use the fetch method." (taken from https://en.wikipedia.org/wiki/Interrupt_vector_table). 
 
 # Findings
 None yet
