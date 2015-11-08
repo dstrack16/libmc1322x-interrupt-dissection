@@ -1,0 +1,43 @@
+Task 3 Links
+
+Summary
+This was a copy paste from a word document I was working with to gather all the links I think were necessary. 
+There are links and some things I've notice below
+
+Main source
+https://github.com/malvira/libmc1322x/blob/master/tests/tmr-ints.c
+Include
+https://github.com/malvira/libmc1322x/blob/master/lib/include/mc1322x.h
+board.h?
+https://github.com/malvira/libmc1322x/blob/master/tests/tests.h
+https://github.com/malvira/libmc1322x/blob/master/tests/config.h
+
+mc1322x.h include
+https://github.com/malvira/libmc1322x/blob/master/lib/include/gpio.h
+https://github.com/malvira/libmc1322x/blob/master/lib/gpio.c
+https://github.com/malvira/libmc1322x/blob/master/lib/include/tmr.h
+https://github.com/malvira/libmc1322x/blob/master/lib/tmr.c
+https://github.com/malvira/libmc1322x/blob/master/lib/include/isr.h
+
+test.h include
+<none at the moment>
+
+Notes
+tmr-ints.c
+•	led is a volatile uint8_t
+•	[line 45] gpio_... functions seen in tmr-ints.c is elaborated in gpio.c
+•	[line 63 & 86] TMR0_CSCTRL = 0x0040, 0x0040 is the base of the RAM address 
+•	[line 49] Once toggle_led() is called, the led is always set to 1 and thus it cannot be turned back on even when off 
+o	[line 47] led_off() includes a step which sets led = 0 so the above is wrong
+o	[line 46] led_on() also has a redundancy with setting led = 1;
+•	[line 59] what is isr? Looks like it toggles the led once via toggle_led() and set some addresses to the base
+o	What does the CS in CSCTRL means? Same for SCTRL
+•	[line 96] enable_irq() is located in isr.h
+•	[line 91] what is with all the set within TMR0_CTRL?
+•	[line 98] infinite loop that runs until an interrupt stops it
+•	config.h doesn’t seem to have much influence
+•	test.h may have some connections as it does include led.h
+•	mc1322x.h seems to branch out to other header files, the most notable as of yet are:
+o	gpio.h, tmr.h, isr.h and possibly their *.c file parts
+•	
+
